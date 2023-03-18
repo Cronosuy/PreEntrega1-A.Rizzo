@@ -1,22 +1,35 @@
 import Button from "../Button/Button";
 import styles from "./navbar.module.css";
 import CartWidget from "../CartWidget/CartWidget";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
+  let activeStyle = {
+    textDecoration: "underline",
+  };
+
   return (
     <nav className={styles.container}>
-      <Link to="/">
+      <NavLink
+        to="/"
+        style={({ isActive }) => (isActive ? activeStyle : undefined)}
+      >
         <p>Sobre Nosotros</p>
-      </Link>
+      </NavLink>
 
-      <Link to="servicios">
+      <NavLink
+        to="servicios"
+        style={({ isActive }) => (isActive ? activeStyle : undefined)}
+      >
         <p>Servicios</p>
-      </Link>
+      </NavLink>
 
-      <Link to="contacto">
+      <NavLink
+        to="contacto"
+        style={({ isActive }) => (isActive ? activeStyle : undefined)}
+      >
         <p>Contacto</p>
-      </Link>
+      </NavLink>
 
       <CartWidget />
     </nav>

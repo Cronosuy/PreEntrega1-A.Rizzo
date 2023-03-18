@@ -4,8 +4,9 @@ import axios from "axios";
 import Navbar from "./assets/components/Navbar/Navbar";
 import { useEffect, useState } from "react";
 import ServiceList from "./assets/components/ServiceList";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Home from "./assets/components/Home";
+import ServiceItem from "./assets/components/ServiceItem";
 
 const App = () => {
   const handleClick = () => {
@@ -27,15 +28,17 @@ const App = () => {
       <Navbar />
       <h1>CRONOS BARBER</h1>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Navigate to="home" />} />
+        <Route path="/home" element={<Home />} />
         <Route
           path="servicios"
           element={<ServiceList servicios={servicios} />}
         />
+        <Route
+          path="/servicios/:id"
+          element={<ServiceItem servicios={servicios} />}
+        />
       </Routes>
-
-      <Button txtBtn="Reservar" handleClick={handleClick} />
-      <Button txtBtn="Pagar" handleClick={handleClick} />
     </div>
   );
 };
